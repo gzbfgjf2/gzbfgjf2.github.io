@@ -1,4 +1,4 @@
-import { getSortedPostsData } from "./blog/[...slug]/page";
+import { getSortedPostsData } from "@/lib/post";
 import Link from "next/link";
 
 export default function Home() {
