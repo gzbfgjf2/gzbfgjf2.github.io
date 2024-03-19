@@ -10,10 +10,18 @@ import rehypeReact from "rehype-react";
 import { Fragment, createElement } from "react";
 import * as prod from "react/jsx-runtime";
 import { getSortedPostsData } from "@/lib/post";
+import rehypeHighlight from "rehype-highlight";
+import "highlight.js/styles/atom-one-light.css";
+import { CodeBlock } from "@/lib/code";
 
 import matter from "gray-matter";
 
-const production = { Fragment: prod.Fragment, jsx: prod.jsx, jsxs: prod.jsxs };
+const production = {
+  Fragment: prod.Fragment,
+  jsx: prod.jsx,
+  jsxs: prod.jsxs,
+  components: { code: CodeBlock },
+};
 
 export async function generateStaticParams() {
   const posts = getSortedPostsData();
@@ -32,6 +40,7 @@ export default async function Page({
     .use(remarkParse)
     .use(remarkMdx)
     .use(remarkRehype)
+    .use(rehypeHighlight)
     // @ts-expect-error: the react types are missing.
     .use(rehypeReact, production)
     .process(post.fileContents);
