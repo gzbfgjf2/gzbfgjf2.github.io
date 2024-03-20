@@ -24,7 +24,7 @@ export default function RootLayout({
           </Link>
         </div>
         <div className="flex justify-center">
-          <div className="w-screen overflow-hidden sm:w-[350px] lg:w-[900px] ">
+          <div className=" border w-screen sm:w-[640px] md:w-[700px] lg:w-[900px] ">
             {children}
           </div>
         </div>

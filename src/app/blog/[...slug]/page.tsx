@@ -13,6 +13,7 @@ import { getSortedPostsData } from "@/lib/post";
 import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/atom-one-light.css";
 import { CodeBlock } from "@/lib/code";
+import React from "react";
 
 import matter from "gray-matter";
 
@@ -20,7 +21,12 @@ const production = {
   Fragment: prod.Fragment,
   jsx: prod.jsx,
   jsxs: prod.jsxs,
-  components: { code: CodeBlock },
+  components: {
+    code: CodeBlock,
+    pre: function({ children, className }) {
+      return <pre className={className + " w-full"}>{children}</pre>;
+    },
+  },
 };
 
 export async function generateStaticParams() {
