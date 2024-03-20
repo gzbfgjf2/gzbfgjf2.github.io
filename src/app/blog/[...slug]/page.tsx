@@ -23,7 +23,7 @@ const production = {
   jsxs: prod.jsxs,
   components: {
     code: CodeBlock,
-    pre: function({ children, className }) {
+    pre: function ({ children, className }: JSX.IntrinsicElements["pre"]) {
       return <pre className={className + " w-full"}>{children}</pre>;
     },
   },
