@@ -8,7 +8,7 @@ export default function Home() {
       {posts.map((x) => (
         <div
           key={x.id}
-          className="bg-gray-600 w-full text-center p-5 [&:not(:last-child)]:mb-5 flex flex-col"
+          className="bg-gray-600 w-full text-center p-5 font-bold text-white [&:not(:last-child)]:mb-5 flex flex-col"
         >
           <Link href={`/blog/${x.id}`} key={x.id}>
             {x.id}
