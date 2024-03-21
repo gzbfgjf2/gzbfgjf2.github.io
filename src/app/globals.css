@@ -30,13 +30,13 @@ html {
   min-height: 100%;
 }
 
-pre code.hljs {
-  font-size: 12px;
-  padding: 5px !important;
-  font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New",
-    monospace !important;
-  line-height: 1em;
-}
+/* pre code.hljs { */
+  /* font-size: 12px; */
+  /* padding: 5px !important; */
+  /* font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", */
+  /*   monospace !important; */
+  /* line-height: 1em; */
+/* } */
 
 @layer utilities {
   .text-balance {

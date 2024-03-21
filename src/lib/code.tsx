@@ -59,7 +59,7 @@ export function CodeBlock({
             )}
           </button>
         </div>
-        <code ref={ref} className={`${className}  text-sm overflow-auto`}>
+        <code ref={ref} className={`${className} text-sm overflow-auto`}>
           {children}
         </code>
       </div>

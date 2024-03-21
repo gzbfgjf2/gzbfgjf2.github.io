@@ -24,7 +24,7 @@ const production = {
   components: {
     code: CodeBlock,
     pre: function ({ children, className }: JSX.IntrinsicElements["pre"]) {
-      return <pre className={className + " w-full"}>{children}</pre>;
+      return <pre className={className}>{children}</pre>;
     },
   },
 };
