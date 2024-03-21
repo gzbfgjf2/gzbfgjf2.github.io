@@ -53,4 +53,4 @@ export default async function Page({
   return res.result;
 }
 
-export const dynamicParams = false;
+// export const dynamicParams = false;
