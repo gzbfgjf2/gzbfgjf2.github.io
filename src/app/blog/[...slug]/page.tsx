@@ -49,12 +49,12 @@ export default async function Page({
     .use(handleYamlMatter)
     .use(remarkRehype)
     .use(insertTitle)
-    .use(function () {
-      return function (tree, file) {
-        console.dir(tree);
-        // console.dir(file);
-      };
-    })
+    // .use(function () {
+    //   return function (tree, file) {
+    //     console.dir(tree);
+    //     console.dir(file);
+    //   };
+    // })
     .use(rehypeHighlight)
     // @ts-expect-error: the react types are missing.
     .use(rehypeReact, rehypeReactOption)
@@ -71,14 +71,19 @@ export default async function Page({
  * @returns
  *   Transform.
  */
-export function handleYamlMatter() {
-  return function (tree, file: any) {
+
+/**
+ * @typedef {import('unist').Node} Node
+ * @typedef {import('vfile').VFile} VFile
+ */
+function handleYamlMatter() {
+  return function (tree: any, file: any) {
     vmatter(file);
     // console.log('file', file)
   };
 }
 
-const insertTitle = () => (tree, file) => {
+const insertTitle = () => (tree: any, file: any) => {
   const titleNode = {
     type: "element",
     tagName: "h1",
