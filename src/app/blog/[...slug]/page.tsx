@@ -14,10 +14,11 @@ import rehypeHighlight from "rehype-highlight";
 import "highlight.js/styles/atom-one-light.css";
 import { CodeBlock } from "@/lib/code";
 import React from "react";
-
+import remarkFrontmatter from "remark-frontmatter";
 import matter from "gray-matter";
+import { matter as vmatter } from "vfile-matter";
 
-const production = {
+const rehypeReactOption = {
   Fragment: prod.Fragment,
   jsx: prod.jsx,
   jsxs: prod.jsxs,
@@ -44,13 +45,46 @@ export default async function Page({
   const post = posts.filter((x) => x.id === slug)[0];
   const res = await unified()
     .use(remarkParse)
-    .use(remarkMdx)
+    .use(remarkFrontmatter, ["yaml", "toml"])
+    .use(handleYamlMatter)
     .use(remarkRehype)
+    .use(insertTitle)
+    .use(function () {
+      return function (tree, file) {
+        console.dir(tree);
+        // console.dir(file);
+      };
+    })
     .use(rehypeHighlight)
     // @ts-expect-error: the react types are missing.
-    .use(rehypeReact, production)
+    .use(rehypeReact, rehypeReactOption)
     .process(post.fileContents);
   return res.result;
 }
 
 // export const dynamicParams = false;
+// import {matter} from 'vfile-matter'
+
+/**
+ * Parse YAML frontmatter and expose it at `file.data.matter`.
+ *
+ * @returns
+ *   Transform.
+ */
+export function handleYamlMatter() {
+  return function (tree, file: any) {
+    vmatter(file);
+    // console.log('file', file)
+  };
+}
+
+const insertTitle = () => (tree, file) => {
+  const titleNode = {
+    type: "element",
+    tagName: "h1",
+    properties: {},
+    children: [{ type: "text", value: file.data.matter.title }],
+  };
+  // Insert the title at the beginning of the body
+  tree.children.unshift(titleNode);
+};

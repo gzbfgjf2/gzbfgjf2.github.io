@@ -40,8 +40,10 @@ export function CodeBlock({
   // is a language block wrapped in a `pre` tag.
   if (className) {
     return (
-      <div className=" text-sm bg-green-200 ">
-        <div className="bg-gray flex text-xs justify-between bg-gray-500">
+      <div className=" text-sm ">
+        <div
+          className={`flex text-xs justify-between ${className} !text-gray-400/90`}
+        >
           <span>{extractLanguageName(className)}</span>
           <button
             className="flex gap-1 items-center justify-center"
@@ -53,13 +55,16 @@ export function CodeBlock({
             }}
           >
             {copied ? (
-              "copied!"
+              <div className="bg-green-300">copied!</div>
             ) : (
-              <Clipboard size={15} alt="copy" weight="bold" />
+              <Clipboard size={15} alt="copy" weight="bold" className="" />
             )}
           </button>
         </div>
-        <code ref={ref} className={`${className} text-sm overflow-auto`}>
+        <code
+          ref={ref}
+          className={`${className} text-sm overflow-auto !pb-[2em]`}
+        >
           {children}
         </code>
       </div>

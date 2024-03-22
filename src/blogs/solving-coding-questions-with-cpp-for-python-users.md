@@ -1,3 +1,8 @@
+---
+title: "Simple C++ for coding questions from a python perspective"
+date: "24-03-2024"
+---
+
 # variable
 
 ```cpp

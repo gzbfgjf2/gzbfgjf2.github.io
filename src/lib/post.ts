@@ -1,5 +1,7 @@
 import fs from "fs";
+import dynamic from "next/dynamic";
 import path from "path";
+import matter from "gray-matter";
 
 const postsDirectory = path.join(process.cwd(), "src/blogs");
 
@@ -15,12 +17,12 @@ export function getSortedPostsData() {
     const fileContents = fs.readFileSync(fullPath, "utf8");
 
     // Use gray-matter to parse the post metadata section
-    // const matterResult = matter(fileContents);
+    const matterResult = matter(fileContents);
 
     // Combine the data with the id
     return {
       id,
-      // ...matterResult,
+      meta: matterResult,
       fileContents,
     };
   });
