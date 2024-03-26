@@ -8,11 +8,11 @@ export default function Home() {
       {posts.map((x) => (
         <div
           key={x.id}
-          className="  bg-gray-600 w-full text-center px-5 py-10 text-white [&:not(:last-child)]:mb-5 flex flex-col"
+          className="  bg-gray-50 w-full text-center p-10 [&:not(:last-child)]:mb-5 flex flex-col"
         >
           <Link href={`/blog/${x.id}`} key={x.id}>
-            <div className="font-bold p-2">{x.meta.data.title}</div>
-            <div className="p-2">{x.meta.data.date}</div>
+            <div className="font-bold">{x.meta.data.title}</div>
+            <div className="">{x.meta.data.date}</div>
           </Link>
         </div>
       ))}

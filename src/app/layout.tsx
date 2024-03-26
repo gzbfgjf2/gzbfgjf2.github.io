@@ -17,14 +17,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <div className=" bg-green-50 text-center backdrop-blur justify-center h-16 flex items-center ">
-          <Link href="/" className="">
-            better
+      <body className={inter.className + " bg-gray-200"}>
+        <div className=" text-center backdrop-blur justify-center h-16 flex items-center bg-gray-50">
+          <Link href="/" className="font-bold">
+            home
           </Link>
         </div>
         <div className="flex justify-center">
-          <div className="  w-screen sm:w-[640px] md:w-[700px] lg:w-[900px] p-5">
+          <div className="  w-screen sm:w-[640px] md:w-[700px] lg:w-[900px] pt-20 ">
             {children}
           </div>
         </div>

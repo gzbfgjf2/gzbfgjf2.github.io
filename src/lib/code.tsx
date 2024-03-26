@@ -46,7 +46,6 @@ export function CodeBlock({
         >
           <span>{extractLanguageName(className)}</span>
           <button
-            className="flex gap-1 items-center justify-center"
             onClick={() => {
               if (ref.current) {
                 navigator.clipboard.writeText(ref.current.innerText ?? "");
@@ -61,10 +60,7 @@ export function CodeBlock({
             )}
           </button>
         </div>
-        <code
-          ref={ref}
-          className={`${className} text-sm overflow-auto !pb-[2em]`}
-        >
+        <code ref={ref} className={`${className} text-sm overflow-auto `}>
           {children}
         </code>
       </div>

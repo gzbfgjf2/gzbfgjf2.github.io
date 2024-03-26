@@ -23,9 +23,12 @@ const rehypeReactOption = {
   jsx: prod.jsx,
   jsxs: prod.jsxs,
   components: {
+    div: function ({ children, className }: JSX.IntrinsicElements["h1"]) {
+      return <div className={className}>{children}</div>;
+    },
     code: CodeBlock,
     pre: function ({ children, className }: JSX.IntrinsicElements["pre"]) {
-      return <pre className={className}>{children}</pre>;
+      return <pre className={className + " !bg-gray-50 "}>{children}</pre>;
     },
   },
 };
@@ -49,15 +52,15 @@ export default async function Page({
     .use(handleYamlMatter)
     .use(remarkRehype)
     .use(insertTitle)
-    // .use(function () {
-    //   return function (tree, file) {
-    //     console.dir(tree);
-    //     console.dir(file);
-    //   };
-    // })
     .use(rehypeHighlight)
     // @ts-expect-error: the react types are missing.
     .use(rehypeReact, rehypeReactOption)
+    .use(function () {
+      return function (tree, file) {
+        console.dir(tree);
+        console.dir(file);
+      };
+    })
     .process(post.fileContents);
   return res.result;
 }
@@ -87,9 +90,19 @@ const insertTitle = () => (tree: any, file: any) => {
   const titleNode = {
     type: "element",
     tagName: "h1",
-    properties: {},
+    properties: {
+      className: ["text-center text-balance"],
+    },
     children: [{ type: "text", value: file.data.matter.title }],
   };
+  const dateNode = {
+    type: "element",
+    tagName: "h4",
+    properties: {
+      className: ["text-center !mb-10"],
+    },
+    children: [{ type: "text", value: file.data.matter.date }],
+  };
   // Insert the title at the beginning of the body
-  tree.children.unshift(titleNode);
+  tree.children.unshift(titleNode, dateNode);
 };
