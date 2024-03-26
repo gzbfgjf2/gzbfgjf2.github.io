@@ -55,12 +55,12 @@ export default async function Page({
     .use(rehypeHighlight)
     // @ts-expect-error: the react types are missing.
     .use(rehypeReact, rehypeReactOption)
-    .use(function () {
-      return function (tree, file) {
-        console.dir(tree);
-        console.dir(file);
-      };
-    })
+    // .use(function () {
+    //   return function (tree, file) {
+    //     console.dir(tree);
+    //     console.dir(file);
+    //   };
+    // })
     .process(post.fileContents);
   return res.result;
 }
@@ -97,7 +97,7 @@ const insertTitle = () => (tree: any, file: any) => {
   };
   const dateNode = {
     type: "element",
-    tagName: "h4",
+    tagName: "h5",
     properties: {
       className: ["text-center !mb-10"],
     },

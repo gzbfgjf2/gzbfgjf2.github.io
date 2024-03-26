@@ -1,5 +1,5 @@
 ---
-title: "Simple Coding Question C++ for Python Users"
+title: "Coding Question C++ for Python Users"
 date: "24-03-2024"
 ---
 

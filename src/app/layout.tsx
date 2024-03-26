@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
 
-const inter = Inter({ subsets: ["latin"] });
+// const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -17,14 +17,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className + " bg-gray-200"}>
-        <div className=" text-center backdrop-blur justify-center h-16 flex items-center bg-gray-50">
-          <Link href="/" className="font-bold">
+      <body className={"font-sans bg-gray-200"}>
+        <div className=" text-center backdrop-blur justify-center h-16 flex items-center text-lg font-bold gap-10">
+          <Link href="/" className="">
+            home
+          </Link>
+          <Link href="/" className="">
             home
           </Link>
         </div>
-        <div className="flex justify-center">
-          <div className="  w-screen sm:w-[640px] md:w-[700px] lg:w-[900px] pt-20 ">
+        <div className="flex flex-col justify-center items-center">
+          <div className="  w-screen sm:w-[640px] md:w-[700px] lg:w-[900px] pt-10 px-10 ">
             {children}
           </div>
         </div>

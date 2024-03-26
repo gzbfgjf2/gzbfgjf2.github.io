@@ -6,8 +6,7 @@ export default function RootLayout({
   return (
     <div
       className={
-        "prose lg:prose-lg max-w-none overflow-clip prose-pre:p-0 prose-pre:rounded-none prose-pre:m-0 prose-code:py-2 "
-
+        "prose max-w-none overflow-clip prose-pre:p-0 prose-pre:rounded-none prose-pre:m-0 prose-code:py-2 "
       }
     >
       {children}
