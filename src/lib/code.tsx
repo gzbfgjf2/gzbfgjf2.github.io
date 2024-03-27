@@ -1,7 +1,8 @@
 "use client";
 // import Copy from "@phosphor-icons/react/dist/icons/Copy";
 // import CheckFat from "@phosphor-icons/react/dist/icons/CheckFat";
-import { Clipboard, CheckFat, Cube } from "@phosphor-icons/react";
+// import { Clipboard, CheckFat, Cube } from "@phosphor-icons/react";
+import { ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 
 import {
   Children,
@@ -54,9 +55,9 @@ export function CodeBlock({
             }}
           >
             {copied ? (
-              <div className="bg-green-300">copied!</div>
+              <CheckIcon className="h-3 w-3 text-green-600 " strokeWidth="5" />
             ) : (
-              <Clipboard size={15} alt="copy" weight="bold" className="" />
+              <ClipboardIcon className="h-3 w-3 text-gray-400" />
             )}
           </button>
         </div>

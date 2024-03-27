@@ -17,13 +17,13 @@
 }
 
 body {
-/*   color: rgb(var(--foreground-rgb)); */
-/*   background: linear-gradient( */
-/*       to bottom, */
-/*       transparent, */
-/*       rgb(var(--background-end-rgb)) */
-/*     ) */
-/*     rgb(var(--background-start-rgb)); */
+  /*   color: rgb(var(--foreground-rgb)); */
+  /*   background: linear-gradient( */
+  /*       to bottom, */
+  /*       transparent, */
+  /*       rgb(var(--background-end-rgb)) */
+  /*     ) */
+  /*     rgb(var(--background-start-rgb)); */
 }
 
 html {
@@ -31,11 +31,11 @@ html {
 }
 
 /* pre code.hljs { */
-  /* font-size: 12px; */
-  /* padding: 5px !important; */
-  /* font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", */
-  /*   monospace !important; */
-  /* line-height: 1em; */
+/* font-size: 12px; */
+/* padding: 5px !important; */
+/* font-family: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", */
+/*   monospace !important; */
+/* line-height: 1em; */
 /* } */
 
 @layer utilities {
