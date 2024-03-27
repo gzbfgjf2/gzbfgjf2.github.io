@@ -1,25 +1,16 @@
 "use client";
 import Link from "next/link";
-import { MoonIcon, SunIcon } from "@heroicons/react/24/outline";
-import {
-  MoonIcon as SolidMoon,
-  SunIcon as SolidSun,
-} from "@heroicons/react/24/solid";
+import { MoonIcon } from "@heroicons/react/24/outline";
+import { MoonIcon as SolidMoonIcon } from "@heroicons/react/24/solid";
 import { useEffect, useState } from "react";
 
-const systemPrefersLight = () => {};
-const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
-
-const checkSystemTheme = () => (matchDark.matches ? "dark" : "light");
-
-const checkManual = () =>
-  document.documentElement.classList.contains("dark") ||
-  document.documentElement.classList.contains("light");
+// const checkSystemTheme = () => {
+//   if (typeof window === "undefined") return "light";
+//   const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
+//   return matchDark.matches ? "dark" : "light";
+// };
 
 export const Header = () => {
-  const click = () => {
-    document.documentElement.classList.add("dark");
-  };
   return (
     <div className=" text-center backdrop-blur justify-center h-16 flex items-center text-lg font-bold gap-10 dark:text-gray-400">
       <Link href="/" className="h-full flex items-center justify-center">
@@ -30,48 +21,69 @@ export const Header = () => {
   );
 };
 
+const checkDark = (media: string, mode: string): string => {
+  if (mode !== "unkown") {
+    return mode;
+  }
+  return media;
+};
 const ThemeController = () => {
-  const [systemThemeState, setSystemThemeState] = useState(checkSystemTheme);
+  const [mode, setMode] = useState("unkown");
+  const [media, setMedia] = useState("light");
   useEffect(() => {
+    if (typeof window === "undefined") return;
+    const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
+    setMedia(matchDark.matches ? "dark" : "light");
     const handleChange = (e: MediaQueryListEvent) =>
-      setSystemThemeState(e.matches ? "dark" : "light");
+      setMedia(e.matches ? "dark" : "light");
     matchDark.addEventListener("change", handleChange);
     return () => matchDark.removeEventListener("change", handleChange);
   }, []);
-  return systemThemeState === "light" ? <Moon /> : <Sun />;
+  return checkDark(media, mode) === "dark" ? (
+    <SolidMoon setMode={setMode} />
+  ) : (
+    <Moon setMode={setMode} />
+  );
 };
 
-const Moon = () => {
+type Icon = {
+  setMode: React.Dispatch<React.SetStateAction<string>>;
+};
+
+const Moon: React.FC<Icon> = ({ setMode }) => {
   const handleClick = () => {
-    if (checkManual()) {
-      document.documentElement.classList.remove("dark");
+    if (document.documentElement.classList.contains("light")) {
+      document.documentElement.classList.replace("light", "dark");
     } else {
       document.documentElement.classList.add("dark");
     }
+    setMode(() => "dark");
   };
   return (
     <button
       onClick={handleClick}
       className="h-full flex items-center justify-center"
     >
-      <MoonIcon className="w-5 h-5 bg-blue-400" />
+      <MoonIcon className="w-5 h-5 " />
     </button>
   );
 };
-const Sun = () => {
+
+const SolidMoon: React.FC<Icon> = ({ setMode }) => {
   const handleClick = () => {
-    if (checkManual()) {
-      document.documentElement.classList.remove("light");
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.replace("dark", "light");
     } else {
       document.documentElement.classList.add("light");
     }
+    setMode(() => "light");
   };
   return (
     <button
       onClick={handleClick}
       className="h-full flex items-center justify-center"
     >
-      <SunIcon className="w-5 h-5 bg-blue-400" />
+      <SolidMoonIcon className="w-5 h-5 fill-black" />
     </button>
   );
 };

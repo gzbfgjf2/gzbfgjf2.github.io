@@ -91,7 +91,7 @@ const insertTitle = () => (tree: any, file: any) => {
     type: "element",
     tagName: "h1",
     properties: {
-      className: ["text-center text-balance"],
+      className: ["text-balance"],
     },
     children: [{ type: "text", value: file.data.matter.title }],
   };
@@ -99,7 +99,7 @@ const insertTitle = () => (tree: any, file: any) => {
     type: "element",
     tagName: "h5",
     properties: {
-      className: ["text-center !mb-10"],
+      className: [" !mb-10"],
     },
     children: [{ type: "text", value: file.data.matter.date }],
   };
