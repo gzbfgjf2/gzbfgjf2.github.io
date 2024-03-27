@@ -41,26 +41,7 @@ export function CodeBlock({
   // is a language block wrapped in a `pre` tag.
   if (className) {
     return (
-      <div className=" text-sm ">
-        <div
-          className={`flex text-xs justify-between ${className} !text-gray-400/90`}
-        >
-          <span>{extractLanguageName(className)}</span>
-          <button
-            onClick={() => {
-              if (ref.current) {
-                navigator.clipboard.writeText(ref.current.innerText ?? "");
-                setCopied(true);
-              }
-            }}
-          >
-            {copied ? (
-              <CheckIcon className="h-3 w-3 text-green-600 " strokeWidth="5" />
-            ) : (
-              <ClipboardIcon className="h-3 w-3 text-gray-400" />
-            )}
-          </button>
-        </div>
+      <div className=" text-sm">
         <code ref={ref} className={`${className} text-sm overflow-auto `}>
           {children}
         </code>
@@ -68,3 +49,22 @@ export function CodeBlock({
     );
   }
 }
+// <div
+//   className={`flex text-xs justify-between ${className} !text-gray-400/90`}
+// >
+//   <span>{extractLanguageName(className)}</span>
+//   <button
+//     onClick={() => {
+//       if (ref.current) {
+//         navigator.clipboard.writeText(ref.current.innerText ?? "");
+//         setCopied(true);
+//       }
+//     }}
+//   >
+//     {copied ? (
+//       <CheckIcon className="h-3 w-3 text-green-600 " strokeWidth="5" />
+//     ) : (
+//       <ClipboardIcon className="h-3 w-3 text-gray-400" />
+//     )}
+//   </button>
+// </div>

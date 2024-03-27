@@ -21,15 +21,18 @@ export const Header = () => {
   );
 };
 
-const checkDark = (media: string, mode: string): string => {
-  if (mode !== "unkown") {
+const checkDark = (
+  media: "light" | "dark",
+  mode: "light" | "dark" | "unknown",
+): "light" | "dark" => {
+  if (mode !== "unknown") {
     return mode;
   }
   return media;
 };
 const ThemeController = () => {
-  const [mode, setMode] = useState("unkown");
-  const [media, setMedia] = useState("light");
+  const [mode, setMode] = useState<"light" | "dark" | "unknown">("unknown");
+  const [media, setMedia] = useState<"light" | "dark">("light");
   useEffect(() => {
     if (typeof window === "undefined") return;
     const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
@@ -47,7 +50,7 @@ const ThemeController = () => {
 };
 
 type Icon = {
-  setMode: React.Dispatch<React.SetStateAction<string>>;
+  setMode: React.Dispatch<React.SetStateAction<"light" | "dark" | "unknown">>;
 };
 
 const Moon: React.FC<Icon> = ({ setMode }) => {
