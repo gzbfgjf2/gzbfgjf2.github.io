@@ -21,20 +21,10 @@ hue-6-2: #c18401
 pre code.hljs {
   display: block;
   padding: 1em;
+  /* overflow-x: auto; */
 }
 code.hljs {
   padding: 3px 5px;
-}
-
-/* Hide scrollbar for Chrome, Safari and Opera */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
 html.light .hljs {

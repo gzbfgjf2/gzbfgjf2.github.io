@@ -29,7 +29,12 @@ const rehypeReactOption = {
     code: CodeBlock,
     pre: function({ children, className }: JSX.IntrinsicElements["pre"]) {
       return (
-        <pre className={className + " !bg-gray-50 !mb-5 last:!mb-0 no-scrollbar "}>
+        <pre
+          className={
+            className +
+            "min-w-full !bg-gray-50 !mb-5 last:!mb-0  "
+          }
+        >
           {children}
         </pre>
       );
