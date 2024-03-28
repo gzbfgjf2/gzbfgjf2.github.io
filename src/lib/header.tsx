@@ -13,7 +13,10 @@ import { useEffect, useState } from "react";
 export const Header = () => {
   return (
     <div className=" text-center backdrop-blur justify-center h-20 flex items-center text-lg font-bold gap-10 dark:text-gray-400 border-gray-300">
-      <Link href="/" className="h-full flex items-center justify-center">
+      <Link
+        href="/"
+        className="h-full flex items-center justify-center basis-20"
+      >
         home
       </Link>
       <ThemeController />
@@ -31,11 +34,12 @@ const checkDark = (
   return media;
 };
 const ThemeController = () => {
+  const [loaded, setLoaded] = useState(false);
   const [mode, setMode] = useState<"light" | "dark" | "unknown">("unknown");
   // this state enables rerender when system theme changes
   const [media, setMedia] = useState<"light" | "dark">("light");
   useEffect(() => {
-    if (typeof window === "undefined") return;
+    setLoaded(true);
     const matchDark = window.matchMedia("(prefers-color-scheme: dark)");
     setMedia(matchDark.matches ? "dark" : "light");
     const handleChange = (e: MediaQueryListEvent) =>
@@ -43,10 +47,16 @@ const ThemeController = () => {
     matchDark.addEventListener("change", handleChange);
     return () => matchDark.removeEventListener("change", handleChange);
   }, []);
-  return checkDark(media, mode) === "dark" ? (
-    <SolidMoon setMode={setMode} />
-  ) : (
-    <Moon setMode={setMode} />
+
+  if (!loaded) return <div className="basis-20 "></div>;
+  return (
+    <div className="basis-20 flex items-center justify-center">
+      {checkDark(media, mode) === "dark" ? (
+        <SolidMoon setMode={setMode} />
+      ) : (
+        <Moon setMode={setMode} />
+      )}
+    </div>
   );
 };
 
