@@ -41,7 +41,7 @@ export function CodeBlock({
   // is a language block wrapped in a `pre` tag.
   if (className) {
     return (
-      <code ref={ref} className={`${className} text-sm overflow-auto `}>
+      <code ref={ref} className={`${className} text-sm  `}>
         {children}
       </code>
     );
