@@ -3,10 +3,11 @@ title: "Coding Question C++ for Python Users"
 date: "24-03-2024"
 ---
 
-# variable
+# Variable
 
 ```cpp
-// type name = value;
+//python x = 1;
+int x = 1;
 // type name1 = value1;  name2 = value2; to save space;
 ListNode* head=node1; tail=node2;
 ```
@@ -21,17 +22,24 @@ For more information about initialisation, see this
 <!-- - aggregate -->
 <!-- - Designated Initializers -->
 
-# list
-
-```python
-arr = [myfunc(x) for x in arr]
-```
+# List
 
 ```cpp
+//python arr = [myfunc(x) for x in arr]
 vector<T> array = std::transform(arr.begin(), arr.end(), target.begin(), myfunc);
 ```
 
-# macros
+# Dictionary
+
+```c++
+// python: umap = {}
+unordered_map<int, int> umap;
+
+//python: if k in umap: ...
+if (umap.count(key))
+```
+
+# Macros
 
 Using macros in C++ can shorten the code.
 

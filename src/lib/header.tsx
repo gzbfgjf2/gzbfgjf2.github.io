@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 
 export const Header = () => {
   return (
-    <div className=" text-center backdrop-blur justify-center h-16 flex items-center text-lg font-bold gap-10 dark:text-gray-400">
+    <div className=" text-center backdrop-blur justify-center h-20 flex items-center text-lg font-bold gap-10 dark:text-gray-400 border-gray-300">
       <Link href="/" className="h-full flex items-center justify-center">
         home
       </Link>
@@ -32,6 +32,7 @@ const checkDark = (
 };
 const ThemeController = () => {
   const [mode, setMode] = useState<"light" | "dark" | "unknown">("unknown");
+  // this state enables rerender when system theme changes
   const [media, setMedia] = useState<"light" | "dark">("light");
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -86,7 +87,7 @@ const SolidMoon: React.FC<Icon> = ({ setMode }) => {
       onClick={handleClick}
       className="h-full flex items-center justify-center"
     >
-      <SolidMoonIcon className="w-5 h-5 fill-black" />
+      <SolidMoonIcon className="w-5 h-5 fill-blue-500" />
     </button>
   );
 };

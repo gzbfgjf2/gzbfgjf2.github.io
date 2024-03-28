@@ -11,7 +11,7 @@ import { Fragment, createElement } from "react";
 import * as prod from "react/jsx-runtime";
 import { getSortedPostsData } from "@/lib/post";
 import rehypeHighlight from "rehype-highlight";
-import "highlight.js/styles/atom-one-light.css";
+// import "highlight.js/styles/atom-one-light.css";
 import { CodeBlock } from "@/lib/code";
 import React from "react";
 import remarkFrontmatter from "remark-frontmatter";
@@ -23,13 +23,15 @@ const rehypeReactOption = {
   jsx: prod.jsx,
   jsxs: prod.jsxs,
   components: {
-    div: function ({ children, className }: JSX.IntrinsicElements["h1"]) {
+    div: function({ children, className }: JSX.IntrinsicElements["h1"]) {
       return <div className={className}>{children}</div>;
     },
     code: CodeBlock,
-    pre: function ({ children, className }: JSX.IntrinsicElements["pre"]) {
+    pre: function({ children, className }: JSX.IntrinsicElements["pre"]) {
       return (
-        <pre className={className + " !bg-gray-50 !mb-5 "}>{children}</pre>
+        <pre className={className + " !bg-gray-50 !mb-5 last:!mb-0 "}>
+          {children}
+        </pre>
       );
     },
   },
@@ -82,7 +84,7 @@ export default async function Page({
  * @typedef {import('vfile').VFile} VFile
  */
 function handleYamlMatter() {
-  return function (tree: any, file: any) {
+  return function(tree: any, file: any) {
     vmatter(file);
     // console.log('file', file)
   };
