@@ -27,6 +27,10 @@ For more information about initialisation, see this
 ```cpp
 //python arr = [myfunc(x) for x in arr]
 vector<T> array = std::transform(arr.begin(), arr.end(), target.begin(), myfunc);
+
+
+//python max(arr)
+std::max_element(begin(arr), end(arr))
 ```
 
 # Dictionary
