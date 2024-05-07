@@ -9,7 +9,7 @@ date: "24-03-2024"
 //python x = 1;
 int x = 1;
 // type name1 = value1;  name2 = value2; to save space;
-ListNode* head=node1; tail=node2;
+ListNode *head=node1; *tail=node2;
 ```
 
 For more information about initialisation, see this
@@ -27,7 +27,6 @@ For more information about initialisation, see this
 ```cpp
 //python arr = [myfunc(x) for x in arr]
 vector<T> array = std::transform(arr.begin(), arr.end(), target.begin(), myfunc);
-
 
 //python max(arr)
 std::max_element(begin(arr), end(arr))
